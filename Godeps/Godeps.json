@@ -1,0 +1,10 @@
+{
+	"ImportPath": "maiconio-photo-speaker",
+	"GoVersion": "go1.3.3",
+	"Deps": [
+		{
+			"ImportPath": "github.com/lib/pq",
+			"Rev": "7175accbed18058468c07811f76440d6e8d7cf19"
+		}
+	]
+}

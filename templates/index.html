@@ -1,0 +1,67 @@
+{{ define "title" }}Photo-Speaker{{ end }}
+{{ define "content"}}
+<table>
+	<tr>
+		<td>
+			<h1 id="message">Photo-Speaker</h1>
+			<p>Photo-Speakear is an application capable of identify labels in a photo and then speak these labels in english.</p>
+			<p>You can upload new photos in the form bellow.</p>
+			<p>After upload your photos, you can click in the button "Speak about!" to listen a description about this photo. (works only on Chrome and Firefox)</p>
+			<p>Photo-Speakear was built on top of IBM Bluemix Platform. It makes use of the Go runtime and other Bluemix services as Visual Recognition, Text to Speech and ElephantSQL(postgres)</p>
+		</td>
+		<td style='width: 30%;'>
+			<img class = 'newappIcon' src='/static/images/bluemix.jpg'>
+			<p><img src="static/images/visual-recognition.png"><img src="static/images/text-to-speech.png"><img src="static/images/elephantsql.png"></p>
+		</td>
+	</tr>
+	<tr>
+		<td colspan=2>
+			<hr/>
+			<form action="./upload" method="POST" enctype="multipart/form-data">
+				<h1 id="message">Upload form:</h1>
+				<p>Choose a photo in your filesystem and then click on "Upload Photo".</p>
+        <input type="file" name="img_File" accept="multipart/form-data"><br/>
+        <input type="submit" value="Upload Photo"/>
+      </form>
+		</td>
+	</tr>
+	<tr>
+		<td colspan=2>
+			<hr/>
+			<h1 id="message">Gallery of photos</h1>
+			<p>Bellow there is a list of previously loaded photos:</p>
+			<hr/>
+			{{range .AllPhotos}}
+				<table>
+					<tr id="tr-{{.ID}}">
+						<td class="td-photo">
+							<span class="file-name">{{.File}}</span> [<a href="/delete?id={{.ID}}">delete</a>]<br/>
+				     	<img src="static/images/{{.ID}}.jpg" style="width:100%" style="float: left"/><br/>
+							<button id="speak-all-{{.ID}}" class="speak-all">Speak about!</button><br/>
+						</td>
+						<td class="td-labels">
+							<ul class="list-labels">
+								{{range .Labels}}
+									<li><span class="menu-item">{{.Name}}</span> ({{.Score}})</li>
+								{{end}}
+							</ul>
+						</td>
+					</tr>
+				</table>
+				<hr/>
+	    {{end}}
+		</td>
+	</tr>
+</table>
+
+<audio class="audio" controls style="display:none">
+Your browser does not support the audio element.
+</audio>
+
+<!-- js files -->
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="static/js/demo.js"></script>
+<script>
+</script>
+{{ end }}
