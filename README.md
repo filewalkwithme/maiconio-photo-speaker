@@ -8,13 +8,22 @@ Photo-Speakear was built on top of IBM Bluemix Platform. It makes use of the Go 
 
 ## Try it alive!
 
-http://maiconio-go.mybluemix.net/
+http://maiconio-photo-speaker.mybluemix.net/
 
+## Setting up Bluemix environment
+
+1. Create a Bluemix account
+2. On you dashboard, Click on 'Create APP' for Cloud Foundry.
+3. Select 'WEB'
+4. Choose the Go runtime
+5. Choose a name for your APP
+6. Click in 'Overview', then 'Add Service or API'
+7. Add Visual Recognition, Text to Speech and ElephantSQL services
 
 ## Setting up the database
 
 Photo-Speaker uses PostgreSQL to store photo information.
-You will need to setup the following schema in your database:
+After add ElephantSQL, you will need to setup the following schema in your database:
 
 ```
 CREATE TABLE photos
@@ -37,16 +46,6 @@ CREATE TABLE photo_labels
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 ```
-
-## Setting up Bluemix environment
-
-1. Create a Bluemix account
-2. On you dashboard, Click on 'Create APP' for Cloud Foundry.
-3. Select 'WEB'
-4. Choose the Go runtime
-5. Choose a name for your APP
-6. Click in 'Overview', then 'Add Service or API'
-7. Add Visual Recognition, Text to Speech and ElephantSQL services
 
 ## Publishing Speaker-Photo
 
